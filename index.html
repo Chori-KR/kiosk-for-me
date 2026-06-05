@@ -651,7 +651,7 @@
       document.getElementById('qr-receipt-list').innerHTML = cart.map(i => `<div class="receipt-line"><span>${i.name} x ${i.count}</span><span style="font-weight:bold;">${f(i.price * i.count)}</span></div>`).join('');
 
       // 💡 QR 코드가 생성되는 시점에 TTS 음성 안내 출력
-      speakTTS("QR코드를 스캔하여 결제해주세요.");
+      speakTTS("Q R 코드를 스캔하여 결제해주세요.");
 
       isPollingActive = true; 
 

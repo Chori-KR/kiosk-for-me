@@ -8,7 +8,6 @@
   <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
-    /* 💡 선생님의 오리지널 컬러와 폰트 설정 완벽 유지 */
     :root { --teal: #20c997; --teal-dark: #12b886; --navy: #0a192f; --bg: #f8f9fa; --text: #212529; --sub: #868e96; --red: #fa5252; --white: #ffffff; }
     body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); margin: 0; overflow: hidden; height: 100vh; color: var(--text); }
     
@@ -23,31 +22,14 @@
     .btn-home svg { width: 24px; height: 24px; stroke: var(--navy); stroke-width: 2; fill: none; }
 
     .receipt-summary {
-      background: var(--navy);
-      color: var(--white);
-      padding: 16px 20px;
-      border-radius: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      margin-bottom: 8px;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 2;
+      background: var(--navy); color: var(--white); padding: 16px 20px; border-radius: 20px;
+      display: flex; justify-content: space-between; align-items: center; cursor: pointer; margin-bottom: 8px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.1); position: relative; z-index: 2;
     }
     .receipt-summary:active { transform: scale(0.98); }
-    
     .receipt-details { display: none; margin-bottom: 24px; animation: fadeIn 0.3s ease; }
     .chevron { margin-left: 12px; font-size: 14px; color: var(--sub); }
 
-    .retro-receipt {
-      background: #fcfcfc; border: 1px solid #ddd; margin-top: -20px; 
-      padding: 36px 20px 20px 20px; border-radius: 0 0 16px 16px; 
-      font-family: 'Courier New', Courier, monospace; color: #333;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
-    }
+    .retro-receipt { background: #fcfcfc; border: 1px solid #ddd; margin-top: -20px; padding: 36px 20px 20px 20px; border-radius: 0 0 16px 16px; font-family: 'Courier New', Courier, monospace; color: #333; box-shadow: 2px 2px 8px rgba(0,0,0,0.05); }
     .retro-header { text-align: center; margin-bottom: 16px; }
     .retro-header img { height: 45px; vertical-align: middle; margin-bottom: 8px; }
     .retro-title { font-size: 18px; font-weight: bold; margin-bottom: 4px; }
@@ -71,9 +53,7 @@
     @media (min-width: 600px) { .responsive-grid { grid-template-columns: repeat(4, 1fr); } }
     @media (min-width: 1024px) { .responsive-grid { grid-template-columns: repeat(6, 1fr); } }
 
-    /* 💡 스크롤 맨 밑까지 내렸을 때 고정된 장바구니에 상품이 가려지지 않도록 하단 패딩 260px 추가 */
     .kiosk-container { flex: 1; overflow-y: auto; padding: 16px; padding-bottom: 260px; min-height: 0; }
-    
     .p-card { background: var(--white); border: 1px solid #ddd; border-radius: 12px; padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; cursor: pointer; transition: transform 0.1s; position: relative; }
     .p-card:active { transform: scale(0.95); }
     .p-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #f1f5f9; border-radius: 8px; margin-bottom: 8px; }
@@ -90,14 +70,7 @@
     .tab { padding: 8px 16px; border-radius: 20px; background: #f1f5f9; color: var(--sub); font-weight: bold; border: none; cursor: pointer; font-size: 14px; }
     .tab.active { background: var(--navy); color: var(--white); }
 
-    /* 💡 핵심 수정: 장바구니 화면 하단 영구 고정 (position: fixed) */
-    #cart-panel { 
-      position: fixed; bottom: 0; left: 0; width: 100%; box-sizing: border-box;
-      background: var(--navy); color: var(--white); border-radius: 24px 24px 0 0; 
-      padding: 20px; display: flex; flex-direction: column; 
-      box-shadow: 0 -5px 20px rgba(0,0,0,0.4); z-index: 1000;
-      max-height: 40vh; 
-    }
+    #cart-panel { position: fixed; bottom: 0; left: 0; width: 100%; box-sizing: border-box; background: var(--navy); color: var(--white); border-radius: 24px 24px 0 0; padding: 20px; display: flex; flex-direction: column; box-shadow: 0 -5px 20px rgba(0,0,0,0.4); z-index: 1000; max-height: 40vh; }
     .cart-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
     .cart-items { overflow-y: auto; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 10px; flex: 1; }
     .cart-item { display: flex; justify-content: space-between; margin-bottom: 6px; align-items: center; }
@@ -112,11 +85,7 @@
     .btn-cancel { background: #f1f5f9; color: var(--sub); border: none; padding: 12px 24px; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; flex-shrink: 0; }
 
     .admin-split-layout { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
-    @media (min-width: 768px) {
-      .admin-split-layout { flex-direction: row; }
-      .admin-left-panel { width: 320px; padding: 16px; overflow-y: auto; border-right: 1px solid #eee; flex-shrink: 0; background: var(--white); }
-      .admin-right-panel { flex: 1; padding: 16px; overflow-y: auto; background: var(--bg); }
-    }
+    @media (min-width: 768px) { .admin-split-layout { flex-direction: row; } .admin-left-panel { width: 320px; padding: 16px; overflow-y: auto; border-right: 1px solid #eee; flex-shrink: 0; background: var(--white); } .admin-right-panel { flex: 1; padding: 16px; overflow-y: auto; background: var(--bg); } }
     .ad-p-item { position: relative; background: #fff; padding: 8px; border-radius: 12px; text-align: center; border: 1px solid #ddd; cursor: pointer; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
     .ad-p-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; margin-bottom: 6px; }
     .ad-p-item .del-x { position: absolute; top: -8px; right: -8px; background: var(--red); color: #fff; width: 24px; height: 24px; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid #fff; cursor: pointer; z-index: 2; }
@@ -126,24 +95,12 @@
     .btn-main { background: var(--teal); color: #fff; border: none; padding: 14px; border-radius: 12px; font-weight: bold; cursor: pointer; }
     .brand-img { width: 140px; margin: 0 auto 20px auto; display: block; }
 
-    @media print {
-      body * { visibility: hidden; } 
-      #print-area, #print-area * { visibility: visible; } 
-      #print-area { position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); width: 100%; text-align: center; margin: 0; padding: 0; box-shadow: none; border: none; }
-      #print-area img, #print-area canvas { width: 400px !important; height: 400px !important; margin: 0 auto; display: block; }
-      #print-title { font-size: 42px !important; margin-bottom: 20px !important; color: #000 !important; }
-      #print-desc { font-size: 24px !important; margin-bottom: 50px !important; color: #333 !important; }
-      .no-print { display: none !important; } 
-      @page { margin: 0; } 
-    }
+    @media print { body * { visibility: hidden; } #print-area, #print-area * { visibility: visible; } #print-area { position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); width: 100%; text-align: center; margin: 0; padding: 0; box-shadow: none; border: none; } #print-area img, #print-area canvas { width: 400px !important; height: 400px !important; margin: 0 auto; display: block; } #print-title { font-size: 42px !important; margin-bottom: 20px !important; color: #000 !important; } #print-desc { font-size: 24px !important; margin-bottom: 50px !important; color: #333 !important; } .no-print { display: none !important; } @page { margin: 0; } }
   </style>
 </head>
 <body>
 
-  <div id="global-loader">
-    <div class="spinner"></div>
-    <p style="margin-top:16px; font-weight:bold; color:var(--navy);">처리 중입니다...</p>
-  </div>
+  <div id="global-loader"><div class="spinner"></div><p style="margin-top:16px; font-weight:bold; color:var(--navy);">처리 중입니다...</p></div>
 
   <div id="custom-alert-modal" class="modal-overlay">
     <div class="modal">
@@ -192,20 +149,13 @@
       <h2>로그인 / 회원가입</h2>
     </header>
     <div id="wallet-login-form" style="padding:24px; display:flex; flex-direction:column; gap:16px;">
-      <div>
-        <input type="text" id="login-id" placeholder="학번" style="margin-bottom:4px;">
-        <p style="font-size:12px; color:var(--sub); margin:0 0 0 4px; text-align:left;">* 예: 1학년 1반 7번이면 1107, 10반 07번이면 11007</p>
-      </div>
+      <div><input type="text" id="login-id" placeholder="학번" style="margin-bottom:4px;"><p style="font-size:12px; color:var(--sub); margin:0 0 0 4px; text-align:left;">* 예: 1학년 1반 7번이면 1107, 10반 07번이면 11007</p></div>
       <input type="password" id="login-pw" placeholder="비밀번호">
       <button class="btn-main" onclick="login()">로그인</button>
       <button style="background:none; border:none; color:var(--sub); text-decoration:underline; font-weight:bold; cursor:pointer;" onclick="toggleAuth(true)">처음이신가요? 회원가입</button>
     </div>
     <div id="wallet-reg-form" style="padding:24px; display:none; flex-direction:column; gap:12px; overflow-y:auto;">
-      <div style="display:flex; gap:8px;">
-        <input type="number" id="reg-grade" placeholder="학년">
-        <input type="number" id="reg-class" placeholder="반">
-        <input type="number" id="reg-num" placeholder="번호">
-      </div>
+      <div style="display:flex; gap:8px;"><input type="number" id="reg-grade" placeholder="학년"><input type="number" id="reg-class" placeholder="반"><input type="number" id="reg-num" placeholder="번호"></div>
       <input type="text" id="reg-name" placeholder="이름 (실명)">
       <input type="password" id="reg-pw" placeholder="비밀번호 설정">
       <input type="password" id="reg-pw-confirm" placeholder="비밀번호 확인">
@@ -256,12 +206,8 @@
       <h2 style="text-align:center; flex:1; margin-right: 32px;">상품 선택</h2>
     </header>
     <div class="tabs" id="kiosk-tabs"></div>
+    <div class="kiosk-container"><div class="responsive-grid" id="kiosk-list"></div></div>
     
-    <div class="kiosk-container">
-      <div class="responsive-grid" id="kiosk-list"></div>
-    </div>
-    
-    <!-- 💡 수정 및 고정된 장바구니 영역 (취소버튼 날림, 비우기버튼만 유지) -->
     <div id="cart-panel">
       <div class="cart-top">
         <span style="font-weight:bold; font-size:18px;">🛒 주문 내역</span>
@@ -274,7 +220,6 @@
         <span style="font-size:14px; color:var(--white);">총 결제금액</span>
         <span id="cart-total-txt" style="font-weight:900; font-size:20px; color:var(--teal);">0원</span>
       </div>
-      <!-- 결제 버튼이 화면을 꽉 채우도록 구성 -->
       <button class="btn-pay" id="btn-pay-action" onclick="requestPayment()" style="opacity:0.5;" disabled>결제하기</button>
     </div>
   </div>
@@ -297,52 +242,35 @@
       <button class="btn-home" onclick="nav('gate')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></button>
       <h2 style="flex:1; text-align:center; margin-right: 32px;">관리자 모드</h2>
     </header>
-    
     <div class="tabs" style="justify-content:center;">
       <button class="tab active" onclick="showAdminTab('product')">상품관리</button>
       <button class="tab" onclick="showAdminTab('asset')">자산관리</button>
       <button class="tab" onclick="showAdminTab('invite')">학생 초대</button>
     </div>
-    
     <div id="admin-product" class="admin-tab-content admin-split-layout">
       <div class="admin-left-panel">
         <div style="background:#fff; padding:16px; border-radius:12px; display:flex; flex-direction:column; gap:8px; border: 2px solid var(--teal);">
           <div style="font-weight:900; color:var(--navy); margin-bottom:8px;">상품 등록 / 수정</div>
           <input type="hidden" id="ad-p-id">
-          <div style="display:flex; gap:8px;">
-            <select id="ad-p-cat-select" onchange="toggleCatInput()"></select>
-            <input type="text" id="ad-p-cat-direct" placeholder="새 카테고리" style="display:none;">
-          </div>
+          <div style="display:flex; gap:8px;"><select id="ad-p-cat-select" onchange="toggleCatInput()"></select><input type="text" id="ad-p-cat-direct" placeholder="새 카테고리" style="display:none;"></div>
           <input type="text" id="ad-p-name" placeholder="상품명 (필수)">
-          <div style="display:flex; gap:8px;">
-            <input type="number" id="ad-p-price" placeholder="가격 (필수)">
-            <input type="number" id="ad-p-stock" placeholder="재고 (필수)">
-          </div>
+          <div style="display:flex; gap:8px;"><input type="number" id="ad-p-price" placeholder="가격 (필수)"><input type="number" id="ad-p-stock" placeholder="재고 (필수)"></div>
           <input type="text" id="ad-p-img" placeholder="이미지 URL (선택)">
-          
           <div style="display:flex; gap:8px; margin-top:8px;">
             <button id="ad-p-btn" class="btn-main" onclick="saveProduct()" style="flex:2;">상품 등록하기</button>
             <button id="ad-p-cancel-btn" class="btn-main" onclick="resetAdminForm()" style="flex:1; background:var(--sub); display:none;">취소</button>
           </div>
         </div>
       </div>
-      <div class="admin-right-panel">
-        <div style="font-weight:900; color:var(--navy); font-size:16px; margin-bottom:12px;">등록된 상품 목록</div>
-        <div class="responsive-grid" id="ad-p-list"></div>
-      </div>
+      <div class="admin-right-panel"><div style="font-weight:900; color:var(--navy); font-size:16px; margin-bottom:12px;">등록된 상품 목록</div><div class="responsive-grid" id="ad-p-list"></div></div>
     </div>
-    
     <div id="admin-asset" class="admin-tab-content" style="padding:16px; display:none; overflow-y:auto; flex:1; flex-direction:column; background:var(--bg);">
       <div id="ad-s-list" style="flex:1; overflow-y:auto; margin-bottom:16px;"></div>
       <div style="background:#fff; padding:20px; border-radius:16px; box-shadow:0 4px 15px rgba(0,0,0,0.05); flex-shrink: 0;">
         <p style="margin:0 0 12px 0; font-weight:bold; color:var(--navy);">선택 학생 자산 일괄 수정</p>
-        <div style="display:flex; gap:10px;">
-          <input type="number" id="as-amt" placeholder="지급/차감액 (+/-)" style="flex:2;">
-          <button class="btn-main" onclick="updateAsset()" style="flex:1;">적용</button>
-        </div>
+        <div style="display:flex; gap:10px;"><input type="number" id="as-amt" placeholder="지급/차감액 (+/-)" style="flex:2;"><button class="btn-main" onclick="updateAsset()" style="flex:1;">적용</button></div>
       </div>
     </div>
-
     <div id="admin-invite" class="admin-tab-content" style="padding:24px; display:none; flex-direction:column; align-items:center; background:var(--bg); flex:1; overflow-y:auto;">
       <div id="print-area" style="background:#fff; padding:40px 20px; border-radius:24px; box-shadow:0 4px 15px rgba(0,0,0,0.05); text-align:center; width:100%; max-width:500px;">
         <div id="print-title" style="font-size:26px; font-weight:900; color:var(--navy); margin-bottom:8px;">모두를 위한 키오스크</div>
@@ -361,12 +289,84 @@
     let pollInterval = null;
     let html5QrCode = null;
     let isPollingActive = false; 
+    let audioCtx = null; // 💡 웹 오디오 컨텍스트 변수 추가
+
+    // 💡 1. 오디오 초기화 및 정책 회피 함수
+    function initAudio() {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        // TTS 엔진을 무음으로 0.1초 깨워 브라우저의 오디오 정책을 해제합니다.
+        if ('speechSynthesis' in window) {
+          const unlockUtterance = new SpeechSynthesisUtterance('');
+          unlockUtterance.volume = 0; // 소리 안 나게
+          window.speechSynthesis.speak(unlockUtterance);
+        }
+      } catch (e) { console.log("오디오 초기화 오류:", e); }
+    }
+
+    // 💡 2. 텍스트 음성 변환 (TTS) 함수
+    function speakTTS(text) {
+      try {
+        if (!window.speechSynthesis) return;
+        window.speechSynthesis.cancel(); // 진행중인 음성이 있으면 취소
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ko-KR'; // 한국어 설정
+        utterance.rate = 1.0;     // 말하는 속도
+        utterance.pitch = 1.0;    // 목소리 톤
+        window.speechSynthesis.speak(utterance);
+      } catch (e) { console.log("TTS 출력 오류:", e); }
+    }
+
+    // 💡 3. 성공 효과음 ("띵동")
+    function playSuccessSound() {
+      try {
+        if (!audioCtx) initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        osc.type = 'sine'; // 맑은 종소리 느낌의 파형
+        osc.frequency.setValueAtTime(987.77, audioCtx.currentTime); // "띵" (B5음)
+        gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+        osc.start();
+        
+        osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.15); // "동" (G5음)
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.6); // 소리가 서서히 줄어듦
+        osc.stop(audioCtx.currentTime + 0.6);
+      } catch (e) { console.log("성공음 출력 오류:", e); }
+    }
+
+    // 💡 4. 실패 효과음 ("띠익")
+    function playFailSound() {
+      try {
+        if (!audioCtx) initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        osc.type = 'sawtooth'; // 찌그러진 느낌의 경고음 파형
+        osc.frequency.setValueAtTime(200, audioCtx.currentTime); // 낮고 거친 소리
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        osc.start();
+        
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.4);
+        osc.stop(audioCtx.currentTime + 0.4);
+      } catch (e) { console.log("실패음 출력 오류:", e); }
+    }
 
     function f(n) { 
       if (n === undefined || n === null || n === "") return "0원";
       let num = String(n).replace(/[^0-9-]/g, ""); 
       return Number(num).toLocaleString('ko-KR') + "원"; 
     }
+    
     function customAlert(msg) {
       return new Promise(resolve => {
         document.getElementById('custom-alert-title').innerText = "알림";
@@ -425,6 +425,9 @@
 
     function goMode(mode) {
       if (!API_URL) return nav('config');
+      
+      initAudio(); // 💡 사용자가 버튼을 눌러 모드를 선택할 때 오디오 잠금 해제!
+
       if (mode === 'wallet') {
         document.getElementById('login-id').value = ''; document.getElementById('login-pw').value = '';
         document.getElementById('reg-grade').value = ''; document.getElementById('reg-class').value = '';
@@ -450,12 +453,9 @@
 
     async function register() {
       const p = {
-        grade: document.getElementById('reg-grade').value,
-        class: document.getElementById('reg-class').value,
-        num: document.getElementById('reg-num').value,
-        name: document.getElementById('reg-name').value,
-        pw: "'" + document.getElementById('reg-pw').value,
-        pw2: "'" + document.getElementById('reg-pw-confirm').value
+        grade: document.getElementById('reg-grade').value, class: document.getElementById('reg-class').value,
+        num: document.getElementById('reg-num').value, name: document.getElementById('reg-name').value,
+        pw: "'" + document.getElementById('reg-pw').value, pw2: "'" + document.getElementById('reg-pw-confirm').value
       };
       if (!p.grade || !p.class || !p.num || !p.name || !p.pw) return await customAlert("모든 항목을 입력하세요.");
       if (p.pw !== p.pw2) return await customAlert("비밀번호가 일치하지 않습니다.");
@@ -487,10 +487,12 @@
         html5QrCode.pause();
         const res = await callApi('approvePayment', [text, currentStudent.id]);
         if (res.success) {
+          playSuccessSound(); // 💡 결제 성공 시 띵동 소리 출력
           await customAlert("결제가 성공적으로 완료되었습니다!");
           closeScanner();
           login(); 
         } else {
+          playFailSound(); // 💡 잔액 부족 등으로 실패 시 띠익 소리 출력
           await customAlert(res.msg);
           html5QrCode.resume();
         }
@@ -513,23 +515,14 @@
       const listDiv = document.getElementById('receipt-list');
       if(res.success && res.data.length > 0) {
         const totalReceipts = res.data.length; 
-        
         listDiv.innerHTML = res.data.reverse().map((r, index) => {
           const orderNum = String(totalReceipts - index).padStart(4, '0');
           const receiptNo = `${currentStudent.id}-${orderNum}`;
-          
           const itemsHtml = r.items.map(item => {
             const cleanName = item.name.replace(/\s*\(.*?\)\s*/g, ''); 
-            return `
-              <div class="retro-row">
-                <span style="flex:2; text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${cleanName}</span>
-                <span style="flex:1; text-align:right;">${item.count}</span>
-                <span style="flex:1; text-align:right;">${f(item.price * item.count)}</span>
-              </div>`;
+            return `<div class="retro-row"><span style="flex:2; text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${cleanName}</span><span style="flex:1; text-align:right;">${item.count}</span><span style="flex:1; text-align:right;">${f(item.price * item.count)}</span></div>`;
           }).join('');
-
-          const detailId = `receipt-detail-${index}`;
-          const chevronId = `chevron-${index}`;
+          const detailId = `receipt-detail-${index}`; const chevronId = `chevron-${index}`;
 
           return `
           <div>
@@ -540,24 +533,15 @@
                 <span id="${chevronId}" class="chevron">∨</span>
               </div>
             </div>
-
             <div id="${detailId}" class="receipt-details">
               <div class="retro-receipt">
-                <div class="retro-header">
-                  <img src="https://i.imgur.com/U8UHMlG.png" alt="초리쌤 로고">
-                  <div class="retro-title">모두를 위한 키오스크</div>
-                </div>
+                <div class="retro-header"><img src="https://i.imgur.com/U8UHMlG.png" alt="초리쌤 로고"><div class="retro-title">모두를 위한 키오스크</div></div>
                 <div style="font-size:12px; margin-bottom:4px;">[영수증 번호] ${receiptNo}</div>
                 <div class="retro-divider"></div>
-                <div class="retro-row" style="font-weight:bold;">
-                  <span style="flex:2; text-align:left;">상품명</span>
-                  <span style="flex:1; text-align:right;">수량</span>
-                  <span style="flex:1; text-align:right;">금액</span>
-                </div>
+                <div class="retro-row" style="font-weight:bold;"><span style="flex:2; text-align:left;">상품명</span><span style="flex:1; text-align:right;">수량</span><span style="flex:1; text-align:right;">금액</span></div>
                 <div class="retro-divider"></div>
                 ${itemsHtml}
-                <div class="retro-divider"></div>
-                <div class="retro-total">합계: ${f(r.amount)}</div>
+                <div class="retro-divider"></div><div class="retro-total">합계: ${f(r.amount)}</div>
               </div>
             </div>
           </div>`;
@@ -570,14 +554,8 @@
     function toggleReceipt(detailId, chevronId) {
       const detail = document.getElementById(detailId);
       const chevron = document.getElementById(chevronId);
-      
-      if (detail.style.display === 'block') {
-        detail.style.display = 'none';
-        chevron.innerText = '∨';
-      } else {
-        detail.style.display = 'block';
-        chevron.innerText = '∧';
-      }
+      if (detail.style.display === 'block') { detail.style.display = 'none'; chevron.innerText = '∨'; } 
+      else { detail.style.display = 'block'; chevron.innerText = '∧'; }
     }
 
     async function loadKiosk() {
@@ -597,36 +575,23 @@
 
     function renderKioskItems(cat) {
       let list = cat === '전체' ? products : products.filter(p => p.category === cat);
-      
-      list.sort((a, b) => {
-        if (a.stock > 0 && b.stock <= 0) return -1;
-        if (a.stock <= 0 && b.stock > 0) return 1;
-        return 0;
-      });
-
+      list.sort((a, b) => { if (a.stock > 0 && b.stock <= 0) return -1; if (a.stock <= 0 && b.stock > 0) return 1; return 0; });
       document.getElementById('kiosk-list').innerHTML = list.map(p => {
         const isSoldOut = p.stock <= 0;
         const cardClass = isSoldOut ? "p-card sold-out" : "p-card";
         const clickAction = isSoldOut ? "" : `onclick="addToCart('${p.name}')"`;
         const badge = isSoldOut ? `<div class="sold-out-badge">매진</div>` : "";
-
         return `
         <div class="${cardClass}" ${clickAction}>
           ${badge}
           <img src="${p.img || 'https://via.placeholder.com/150'}" class="p-img">
-          <div class="p-info">
-            <div class="p-name">${p.name}</div>
-            <div class="p-price">${f(p.price)}</div>
-            <div class="p-stock">남은 수량: ${p.stock}개</div>
-          </div>
-        </div>
-        `;
+          <div class="p-info"><div class="p-name">${p.name}</div><div class="p-price">${f(p.price)}</div><div class="p-stock">남은 수량: ${p.stock}개</div></div>
+        </div>`;
       }).join('');
     }
 
     function addToCart(name) {
-      const p = products.find(i => i.name === name);
-      const exist = cart.find(i => i.name === name);
+      const p = products.find(i => i.name === name); const exist = cart.find(i => i.name === name);
       if (exist) exist.count++; else cart.push({ ...p, count: 1 });
       updateCartUI();
     }
@@ -638,13 +603,8 @@
       updateCartUI();
     }
 
-    /* 💡 에러의 주범이었던 clearCart 함수 완벽히 복구 */
-    function clearCart() {
-      cart = [];
-      updateCartUI();
-    }
+    function clearCart() { cart = []; updateCartUI(); }
 
-    /* 💡 결제 버튼 활성화 로직 완벽 복구 */
     function updateCartUI() {
       const list = document.getElementById('cart-items');
       const payBtn = document.getElementById('btn-pay-action');
@@ -652,14 +612,11 @@
       if (cart.length === 0) { 
         list.innerHTML = `<div style="text-align:center; color:rgba(255,255,255,0.6); padding:20px;">장바구니가 비어있어요</div>`;
         document.getElementById('cart-total-txt').innerText = "0원";
-        payBtn.style.opacity = "0.5";
-        payBtn.disabled = true; // 비어있으면 결제버튼 비활성화
+        payBtn.style.opacity = "0.5"; payBtn.disabled = true; 
         return; 
       }
       
-      payBtn.style.opacity = "1";
-      payBtn.disabled = false; // 물건이 담기면 결제버튼 즉시 활성화!
-
+      payBtn.style.opacity = "1"; payBtn.disabled = false; 
       let total = 0;
       list.innerHTML = cart.map(i => {
         total += i.price * i.count;
@@ -691,39 +648,36 @@
       new QRCode(document.getElementById('qr-code'), { text: orderId, width: 200, height: 200 });
       
       document.getElementById('qr-total-txt').innerText = "총 " + f(total);
-      document.getElementById('qr-receipt-list').innerHTML = cart.map(i => `
-        <div class="receipt-line"><span>${i.name} x ${i.count}</span><span style="font-weight:bold;">${f(i.price * i.count)}</span></div>
-      `).join('');
+      document.getElementById('qr-receipt-list').innerHTML = cart.map(i => `<div class="receipt-line"><span>${i.name} x ${i.count}</span><span style="font-weight:bold;">${f(i.price * i.count)}</span></div>`).join('');
+
+      // 💡 QR 코드가 생성되는 시점에 TTS 음성 안내 출력
+      speakTTS("QR코드를 스캔하여 결제해주세요.");
 
       isPollingActive = true; 
 
       pollInterval = setInterval(async () => {
         if (!isPollingActive) return; 
-        
         const res = await callApi('checkPaymentStatus', [orderId], true);
-        
         if (!isPollingActive) return; 
 
         if (res.status === '완료' || !res.status) { 
           isPollingActive = false; 
           clearInterval(pollInterval);
+          playSuccessSound(); // 💡 키오스크 화면에서 결제 완료 시 띵동 출력
           await customAlert("결제가 성공적으로 완료되었습니다!");
           clearCart(); 
           nav('kiosk-main');
         } else if (res.status === '잔액부족') {
           isPollingActive = false; 
           clearInterval(pollInterval);
+          playFailSound(); // 💡 키오스크 화면에서 잔액 부족 시 띠익 출력
           await customAlert("학생의 잔액이 부족합니다.");
         }
       }, 2000);
     }
 
     function cancelOrder() { isPollingActive = false; clearInterval(pollInterval); nav('kiosk-main'); }
-
-    function openAdminAuth() { 
-      document.getElementById('admin-pw-input').value = ''; 
-      document.getElementById('admin-modal').style.display = 'flex'; 
-    }
+    function openAdminAuth() { document.getElementById('admin-pw-input').value = ''; document.getElementById('admin-modal').style.display = 'flex'; }
     function closeAdminAuth() { document.getElementById('admin-modal').style.display = 'none'; }
     async function checkAdminPw() {
       if (document.getElementById('admin-pw-input').value === '5863') {
@@ -736,21 +690,15 @@
       document.getElementById('admin-' + t).style.display = 'flex';
       document.querySelectorAll('#page-admin .tab').forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
-      
       if (t === 'product') { resetAdminForm(); loadAdminProducts(); } 
       if (t === 'asset') loadAdminStudents();
       if (t === 'invite') generateInviteQR(); 
     }
 
     function generateInviteQR() {
-      const qrContainer = document.getElementById('invite-qr-code');
-      qrContainer.innerHTML = ""; 
-      
+      const qrContainer = document.getElementById('invite-qr-code'); qrContainer.innerHTML = ""; 
       if (!API_URL) return;
-      
-      const baseUrl = window.location.href.split('?')[0];
-      const magicLink = baseUrl + "?api=" + encodeURIComponent(API_URL);
-      
+      const baseUrl = window.location.href.split('?')[0]; const magicLink = baseUrl + "?api=" + encodeURIComponent(API_URL);
       new QRCode(qrContainer, { text: magicLink, width: 250, height: 250 });
     }
 
@@ -758,15 +706,12 @@
       const res = await callApi('getProducts'); products = res.data;
       const cats = [...new Set(products.map(p => p.category))];
       const sel = document.getElementById('ad-p-cat-select');
-      
       sel.innerHTML = '<option value="" disabled selected>[카테고리 선택]</option><option value="direct">[+ 직접 입력]</option>' + cats.map(c => `<option value="${c}">${c}</option>`).join('');
-      
       document.getElementById('ad-p-list').innerHTML = products.map(p => `
         <div class="ad-p-item" onclick="editProduct('${p.id}')">
           <div class="del-x" onclick="event.stopPropagation(); deleteProduct('${p.id}')">X</div>
           <img src="${p.img || 'https://via.placeholder.com/150'}">
-          <div class="name">${p.name}</div>
-          <div class="stock">재고: ${p.stock}개 | ${f(p.price)}</div>
+          <div class="name">${p.name}</div><div class="stock">재고: ${p.stock}개 | ${f(p.price)}</div>
         </div>
       `).join('');
     }
@@ -780,39 +725,22 @@
     function editProduct(id) {
       const p = products.find(i => i.id.toString() === id.toString());
       document.getElementById('ad-p-id').value = p.id;
-      
-      const sel = document.getElementById('ad-p-cat-select');
-      let catExists = false;
+      const sel = document.getElementById('ad-p-cat-select'); let catExists = false;
       for (let i = 0; i < sel.options.length; i++) { if (sel.options[i].value === p.category) catExists = true; }
-      if (catExists) sel.value = p.category;
-      else { sel.value = 'direct'; document.getElementById('ad-p-cat-direct').value = p.category; }
-      
-      document.getElementById('ad-p-name').value = p.name;
-      document.getElementById('ad-p-price').value = p.price;
-      document.getElementById('ad-p-stock').value = p.stock;
-      document.getElementById('ad-p-img').value = p.img;
-      
-      document.getElementById('ad-p-btn').innerText = "상품 수정하기";
-      document.getElementById('ad-p-cancel-btn').style.display = 'block';
+      if (catExists) sel.value = p.category; else { sel.value = 'direct'; document.getElementById('ad-p-cat-direct').value = p.category; }
+      document.getElementById('ad-p-name').value = p.name; document.getElementById('ad-p-price').value = p.price;
+      document.getElementById('ad-p-stock').value = p.stock; document.getElementById('ad-p-img').value = p.img;
+      document.getElementById('ad-p-btn').innerText = "상품 수정하기"; document.getElementById('ad-p-cancel-btn').style.display = 'block';
       toggleCatInput();
     }
 
     async function saveProduct() {
       const catSelect = document.getElementById('ad-p-cat-select').value;
       if (catSelect === "") return await customAlert("카테고리를 선택하거나 직접 입력해주세요.");
-
       const category = catSelect === 'direct' ? document.getElementById('ad-p-cat-direct').value : catSelect;
-      const name = document.getElementById('ad-p-name').value;
-      const price = document.getElementById('ad-p-price').value;
-      const stock = document.getElementById('ad-p-stock').value;
-      
+      const name = document.getElementById('ad-p-name').value; const price = document.getElementById('ad-p-price').value; const stock = document.getElementById('ad-p-stock').value;
       if (!category || !name || !price || !stock) return await customAlert("카테고리, 상품명, 가격, 재고는 필수 입력 항목입니다.");
-
-      const p = {
-        id: document.getElementById('ad-p-id').value || "P" + new Date().getTime(),
-        category: category, name: name, price: price, stock: stock,
-        img: document.getElementById('ad-p-img').value
-      };
+      const p = { id: document.getElementById('ad-p-id').value || "P" + new Date().getTime(), category: category, name: name, price: price, stock: stock, img: document.getElementById('ad-p-img').value };
       const res = await callApi('saveProduct', [p, false]);
       if (res.success) { await customAlert("정상적으로 저장되었습니다."); resetAdminForm(); loadAdminProducts(); }
     }
@@ -828,12 +756,8 @@
       document.getElementById('ad-p-id').value = ""; document.getElementById('ad-p-name').value = "";
       document.getElementById('ad-p-price').value = ""; document.getElementById('ad-p-stock').value = "";
       document.getElementById('ad-p-img').value = ""; document.getElementById('ad-p-cat-direct').value = "";
-      
       document.getElementById('ad-p-cat-select').value = ""; 
-      
-      toggleCatInput();
-      document.getElementById('ad-p-btn').innerText = "상품 등록하기";
-      document.getElementById('ad-p-cancel-btn').style.display = 'none';
+      toggleCatInput(); document.getElementById('ad-p-btn').innerText = "상품 등록하기"; document.getElementById('ad-p-cancel-btn').style.display = 'none';
     }
 
     async function loadAdminStudents() {
@@ -848,19 +772,14 @@
       `).join('');
     }
 
-    /* 💡 관리자 자산 업데이트 후 입력칸 깔끔하게 비우기 적용 */
     async function updateAsset() {
       const ids = Array.from(document.querySelectorAll('.as-check:checked')).map(cb => cb.value);
-      const amtInput = document.getElementById('as-amt');
-      const amt = amtInput.value;
+      const amtInput = document.getElementById('as-amt'); const amt = amtInput.value;
       if (!ids.length || !amt) return await customAlert("학생을 선택하고 지급/차감할 금액을 입력하세요.");
-      
       const res = await callApi('updateAdminAsset', [ids, amt]);
       if (res.success) { 
         await customAlert("자산이 일괄 반영되었습니다."); 
-        amtInput.value = ''; // 입력칸 초기화
-        document.querySelectorAll('.as-check:checked').forEach(cb => cb.checked = false); // 체크박스 해제
-        loadAdminStudents(); 
+        amtInput.value = ''; document.querySelectorAll('.as-check:checked').forEach(cb => cb.checked = false); loadAdminStudents(); 
       }
     }
 
@@ -874,19 +793,11 @@
     window.onload = function() {
       const urlParams = new URLSearchParams(window.location.search);
       const apiParam = urlParams.get('api');
-
       if (apiParam && apiParam.includes('google.com')) {
-        API_URL = apiParam;
-        localStorage.setItem('API_URL', apiParam);
-        
-        window.history.replaceState({}, document.title, window.location.pathname);
-        nav('gate');
-        return;
+        API_URL = apiParam; localStorage.setItem('API_URL', apiParam);
+        window.history.replaceState({}, document.title, window.location.pathname); nav('gate'); return;
       }
-
-      if (API_URL && API_URL.includes('google.com')) {
-        nav('gate');
-      }
+      if (API_URL && API_URL.includes('google.com')) { nav('gate'); }
     };
   </script>
 </body>
